@@ -2,6 +2,7 @@ import "./App.css";
 import Bar from "./Menu/Appbar.js";
 import Homepage from "./Homepage";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 const theme = createMuiTheme({
   typography: {
@@ -11,12 +12,15 @@ const theme = createMuiTheme({
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <div className="App">
+    <Router>
+      <ThemeProvider theme={theme}>
         <Bar />
-        <Homepage />
-      </div>
-    </ThemeProvider>
+        <Route exact path="/">
+          <Route path="/about"></Route>
+          <Homepage />
+        </Route>
+      </ThemeProvider>
+    </Router>
   );
 }
 

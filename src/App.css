@@ -3,7 +3,17 @@
 .App {
   text-align: center;
 }
-
+::-webkit-scrollbar {
+  display: none;
+}
+::-moz-scrollbar {
+  display: none;
+}
+body {
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-color: transparent transparent;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

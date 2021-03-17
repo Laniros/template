@@ -4,7 +4,8 @@ const tileData = [
     title: "Alyce Bass",
   },
   {
-    img: "https://material-ui.com/static/images/grid-list/burgers.jpg",
+    img:
+      "https://image.freepik.com/free-photo/hamburgers-with-beef-tomato-red-onion-lettuce_2829-10845.jpg",
     title: "Sabiha Plummer",
     cols: 2,
   },
@@ -21,11 +22,13 @@ const tileData = [
   },
 
   {
-    img: "https://uifaces.co/our-content/donated/n4Ngwvi7.jpg",
+    img:
+      "https://images.pexels.com/photos/1447092/pexels-photo-1447092.png?auto=compress&cs=tinysrgb&dpr=2&w=500",
     title: "Keanu Hood",
   },
   {
-    img: "https://uifaces.co/our-content/donated/gPZwCbdS.jpg",
+    img:
+      "https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
     title: "Leonardo Davila",
   },
   {
