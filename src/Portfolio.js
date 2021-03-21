@@ -1,4 +1,4 @@
-import React, { useDebugValue, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
@@ -7,16 +7,12 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
+import Carousel from "react-material-ui-carousel";
 import { Typography } from "@material-ui/core";
+
 const windowHeight = window.innerHeight;
 
 const useStyles = makeStyles((theme) => ({
-  grid: {
-    marginTop: "20px",
-    spacing: 8,
-    overflow: "hidden",
-    backgroundColor: theme.palette.background.paper,
-  },
   spinner: {
     display: "flex",
     "& > * + *": {
@@ -33,16 +29,36 @@ const useStyles = makeStyles((theme) => ({
     borderBottom: "10px",
     marginBottom: "20px",
   },
+  img: {
+    maxHeight: windowHeight / 1.5,
+    marginLeft: "auto",
+    marginRight: "auto",
+    display: "block",
+  },
+  paper: {
+    backgroundColor: theme.palette.background.paper,
+    border: "2px solid #000",
+    boxShadow: theme.shadows[8],
+    width: "60%",
+    height: "70%",
+    top: "80%",
+    padding: theme.spacing(2, 0, 3),
+  },
+  modal: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
 }));
 
 const Portolio = () => {
   const classes = useStyles();
 
   const [open, setOpen] = useState(false);
-  const [activeModal, setActiveModal] = useState(0);
   const [foodTiles, setFoodTiles] = useState([]);
   const [portraitTiles, setPortraitTiles] = useState([]);
   const [landscapeTiles, setLandscapeTiles] = useState([]);
+  const [source, setSource] = useState("");
 
   useEffect(() => {
     addFood();
@@ -58,9 +74,9 @@ const Portolio = () => {
     setOpen(false);
   };
 
-  const handleModal = (index) => {
+  const handleModal = (src) => {
     handleOpen();
-    setActiveModal(index);
+    setSource(src);
   };
 
   const addFood = () => {
@@ -104,29 +120,42 @@ const Portolio = () => {
     return false;
   }
 
-  function createGridByCategory(catergoryTiles) {
+  function createCarouselByCatergory(catergoryTiles) {
     return (
-      <GridList spacing={5} className={classes.gridList} cols={3}>
+      <Carousel
+        className={classes.carousel}
+        indicators={false}
+        interval={10000}
+      >
         {catergoryTiles.map((tile, index) => (
-          <GridListTile key={index} cols={tile.cols || 1}>
-            <img src={tile.img} alt={index} />
-          </GridListTile>
+          <img
+            key={index}
+            src={tile.img}
+            alt={index}
+            className={classes.img}
+            onClick={(e) => handleModal(e.target.currentSrc)}
+          />
         ))}
-      </GridList>
+      </Carousel>
     );
   }
 
   return (
     <div>
       {isDataEmpty() ? (
-        <div className={classes.grid}>
-          <h1 className={classes.header}>Food:</h1>
-          {createGridByCategory(foodTiles)}
-          <h1 className={classes.header}>Landscape:</h1>
-          {createGridByCategory(landscapeTiles)}
-          <h1 className={classes.header}>Portrait:</h1>
-          {createGridByCategory(portraitTiles)}
-
+        <div>
+          <Typography variant="h3" className={classes.header}>
+            Food:
+          </Typography>
+          {createCarouselByCatergory(foodTiles)}
+          <Typography variant="h3" className={classes.header}>
+            Landscape:
+          </Typography>
+          {createCarouselByCatergory(landscapeTiles)}
+          <Typography variant="h3" className={classes.header}>
+            Portrait:
+          </Typography>
+          {createCarouselByCatergory(portraitTiles)}
           <Modal
             aria-labelledby={`transition-modal-title`}
             aria-describedby={`transition-modal-description`}
@@ -141,11 +170,7 @@ const Portolio = () => {
           >
             <Fade in={open}>
               <div className={classes.paper}>
-                <img
-                  src={portraitTiles[activeModal].img}
-                  className={classes.img}
-                  alt=""
-                />
+                <img src={source} className={classes.img} alt="" />
               </div>
             </Fade>
           </Modal>

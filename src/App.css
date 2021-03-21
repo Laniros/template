@@ -48,3 +48,17 @@ body {
     transform: rotate(360deg);
   }
 }
+@media only screen and (max-width: 600px) {
+  body {
+    background-color: lightblue;
+  }
+  .CarouselItem {
+    justify-content: center;
+    height: 90px;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .CarouselItem {
+    height: 600px;
+  }
+}
