@@ -22,7 +22,6 @@ const useStyles = makeStyles(() => ({
   button: {
     textDecorationLine: "overline",
 
-    color: "#808080",
     borderBottomWidth: "10px",
     borderBottom: "10px",
 
@@ -31,6 +30,7 @@ const useStyles = makeStyles(() => ({
       color: "#000000",
       textDecorationLine: "overline",
     },
+
     "&:active": {
       //you want this to be the same as the backgroundColor above
       color: "#000000",
@@ -48,9 +48,10 @@ const useStyles = makeStyles(() => ({
 
 const Bar = () => {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(-1);
 
   useEffect(() => {
+    console.log(value);
     let path = window.location.pathname;
     if (path === "/about" && value !== 2) setValue(2);
     else if (path === "/portfolio" && value !== 1) setValue(1);
@@ -74,13 +75,31 @@ const Bar = () => {
           </Typography>
           <div className={classes.allLinks}>
             <Link className={classes.link} to="/">
-              <Button className={classes.button}>Home</Button>
+              <Button
+                className={classes.button}
+                onClick={() => setValue(0)}
+                style={value === 0 ? { color: "#808080" } : { color: "black" }}
+              >
+                Home
+              </Button>
             </Link>
             <Link to="/portfolio">
-              <Button className={classes.button}>Portfolio</Button>
+              <Button
+                className={classes.button}
+                onClick={() => setValue(1)}
+                style={value === 1 ? { color: "#808080" } : { color: "black" }}
+              >
+                Portfolio
+              </Button>
             </Link>
             <Link to="/about">
-              <Button className={classes.button}>About</Button>
+              <Button
+                className={classes.button}
+                onClick={() => setValue(2)}
+                style={value === 2 ? { color: "#808080" } : { color: "black" }}
+              >
+                About
+              </Button>
             </Link>
           </div>
         </Toolbar>
