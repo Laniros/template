@@ -85,3 +85,6 @@ body {
     display: block;
   }
 }
+.box {
+  width: 800px;
+}

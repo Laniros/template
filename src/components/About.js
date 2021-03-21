@@ -11,7 +11,7 @@ function About() {
       textAlign: "center",
       border: "2px solid black",
       height: "80%",
-      width: "40%",
+      width: "60%",
       margin: "auto",
     },
   }));
