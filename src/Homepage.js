@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
-import Modal from "@material-ui/core/Modal";
 import tileData from "./tileData";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 
@@ -22,6 +22,8 @@ const useStyles = makeStyles((theme) => ({
     "& > * + *": {
       marginLeft: theme.spacing(2),
     },
+    justifyContent: "center",
+    padding: windowHeight / 4,
   },
   modal: {
     display: "flex",
@@ -60,10 +62,10 @@ const Homepage = () => {
     setActiveModal(index);
   };
   return (
-    <div className={classes.grid}>
-      <GridList spacing={5} className={classes.gridList} cols={3}>
-        {tileData ? (
-          tileData.map((tile, index) => (
+    <div>
+      {tileData ? (
+        <GridList spacing={5} className={classes.gridList} cols={3}>
+          {tileData.map((tile, index) => (
             <GridListTile
               onClick={() => handleModal(index)}
               key={tile.img}
@@ -71,13 +73,14 @@ const Homepage = () => {
             >
               <img src={tile.img} alt={tile.title} />
             </GridListTile>
-          ))
-        ) : (
-          <div className={classes.spinner}>
-            <CircularProgress />
-          </div>
-        )}
-      </GridList>
+          ))}
+        </GridList>
+      ) : (
+        <div className={classes.spinner}>
+          <CircularProgress />
+        </div>
+      )}
+
       <Modal
         aria-labelledby={`transition-modal-title`}
         aria-describedby={`transition-modal-description`}
