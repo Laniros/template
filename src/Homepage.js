@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
+import Modal from "@material-ui/core/Modal";
 import tileData from "./tileData";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import Backdrop from "@material-ui/core/Backdrop";
+import Fade from "@material-ui/core/Fade";
 
+const windowHeight = window.innerHeight;
 const useStyles = makeStyles((theme) => ({
   grid: {
     marginTop: "20px",
@@ -12,25 +17,89 @@ const useStyles = makeStyles((theme) => ({
     overflow: "hidden",
     backgroundColor: theme.palette.background.paper,
   },
+  spinner: {
+    display: "flex",
+    "& > * + *": {
+      marginLeft: theme.spacing(2),
+    },
+  },
+  modal: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    margin: "auto",
+    position: "fixed",
+  },
+  img: {
+    maxHeight: (windowHeight * 2) / 3,
+  },
+
+  paper: {
+    backgroundColor: theme.palette.background.paper,
+    border: "2px solid #000",
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+  },
 }));
 
 const Homepage = () => {
   const classes = useStyles();
 
+  const [open, setOpen] = useState(false);
+  const [activeModal, setActiveModal] = useState(0);
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleModal = (index) => {
+    handleOpen();
+    setActiveModal(index);
+  };
   return (
     <div className={classes.grid}>
-      <GridList
-        spacing={3}
-        cellHeight={220}
-        className={classes.gridList}
-        cols={3}
-      >
-        {tileData.map((tile) => (
-          <GridListTile key={tile.img} cols={tile.cols || 1}>
-            <img src={tile.img} alt={tile.title} />
-          </GridListTile>
-        ))}
+      <GridList spacing={5} className={classes.gridList} cols={3}>
+        {tileData ? (
+          tileData.map((tile, index) => (
+            <GridListTile
+              onClick={() => handleModal(index)}
+              key={tile.img}
+              cols={tile.cols || 1}
+            >
+              <img src={tile.img} alt={tile.title} />
+            </GridListTile>
+          ))
+        ) : (
+          <div className={classes.spinner}>
+            <CircularProgress />
+          </div>
+        )}
       </GridList>
+      <Modal
+        aria-labelledby={`transition-modal-title`}
+        aria-describedby={`transition-modal-description`}
+        className={classes.modal}
+        open={open}
+        onClose={handleClose}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 200,
+        }}
+      >
+        <Fade in={open}>
+          <div className={classes.paper}>
+            <img
+              src={tileData[activeModal].img}
+              className={classes.img}
+              alt=""
+            />
+          </div>
+        </Fade>
+      </Modal>
     </div>
   );
 };

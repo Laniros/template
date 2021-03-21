@@ -61,7 +61,15 @@ const Bar = () => {
     <div>
       <AppBar elevation={0} position="sticky" className={classes.appbar}>
         <Toolbar>
-          <Typography variant="h2" className={classes.title}>
+          <Typography
+            variant={window.innerWidth > 768 ? "h2" : "h5"}
+            style={
+              window.innerWidth > 768
+                ? { marginRight: "0px" }
+                : { marginRight: "20px" }
+            }
+            className={classes.title}
+          >
             JOHN SNOW
           </Typography>
           <div className={classes.allLinks}>
