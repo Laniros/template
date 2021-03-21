@@ -1,7 +1,8 @@
 import "./App.css";
 import Bar from "./Menu/Appbar.js";
-import Homepage from "./Homepage";
-import Portfolio from "./Portfolio";
+import Homepage from "./components/Homepage";
+import Portfolio from "./components/Portfolio";
+import About from "./components/About";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
@@ -16,7 +17,9 @@ function App() {
     <Router>
       <ThemeProvider theme={theme}>
         <Bar />
-        <Route path="/about"></Route>
+        <Route path="/about">
+          <About />
+        </Route>
         <Route path="/portfolio">
           <Portfolio />
         </Route>
