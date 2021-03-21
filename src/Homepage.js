@@ -32,9 +32,6 @@ const useStyles = makeStyles((theme) => ({
     margin: "auto",
     position: "fixed",
   },
-  img: {
-    maxHeight: (windowHeight * 2) / 3,
-  },
 
   paper: {
     backgroundColor: theme.palette.background.paper,
@@ -95,11 +92,7 @@ const Homepage = () => {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <img
-              src={tileData[activeModal].img}
-              className={classes.img}
-              alt=""
-            />
+            <img src={tileData[activeModal].img} className="img" alt="" />
           </div>
         </Fade>
       </Modal>

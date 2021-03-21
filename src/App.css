@@ -49,16 +49,39 @@ body {
   }
 }
 @media only screen and (max-width: 600px) {
-  body {
-    background-color: lightblue;
-  }
   .CarouselItem {
+    height: 200px;
+    align-self: center;
+  }
+  .img {
+    display: block;
+    max-height: 200px;
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: auto;
+  }
+  .paper {
+    transform: scale(0.4);
+    justify-self: center;
     justify-content: center;
-    height: 90px;
+    align-self: center;
+    align-content: center;
+    align-items: center;
   }
 }
 @media only screen and (min-width: 600px) {
   .CarouselItem {
+    align-content: center;
+    justify-items: center;
     height: 600px;
+  }
+  .img {
+    max-height: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    align-content: center;
+    justify-items: center;
+    display: block;
   }
 }

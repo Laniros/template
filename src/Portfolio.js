@@ -30,24 +30,28 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "20px",
   },
   img: {
-    maxHeight: windowHeight / 1.5,
+    maxHeight: windowHeight / 1.2,
     marginLeft: "auto",
     marginRight: "auto",
     display: "block",
-  },
-  paper: {
-    backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
-    boxShadow: theme.shadows[8],
-    width: "60%",
-    height: "70%",
-    top: "80%",
-    padding: theme.spacing(2, 0, 3),
   },
   modal: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    margin: "auto",
+    position: "fixed",
+  },
+  paper: {
+    backgroundColor: theme.palette.background.paper,
+    border: "2px solid #000",
+    boxShadow: theme.shadows[8],
+    padding: theme.spacing(2, 4, 3),
+  },
+  carousel: {
+    justifyContent: "center",
+    alignContent: "center",
+    alignItems: "center",
   },
 }));
 
@@ -132,7 +136,7 @@ const Portolio = () => {
             key={index}
             src={tile.img}
             alt={index}
-            className={classes.img}
+            className="img"
             onClick={(e) => handleModal(e.target.currentSrc)}
           />
         ))}
@@ -144,15 +148,24 @@ const Portolio = () => {
     <div>
       {isDataEmpty() ? (
         <div>
-          <Typography variant="h3" className={classes.header}>
+          <Typography
+            variant={window.innerWidth > 768 ? "h3" : "h5"}
+            className={classes.header}
+          >
             Food:
           </Typography>
           {createCarouselByCatergory(foodTiles)}
-          <Typography variant="h3" className={classes.header}>
+          <Typography
+            variant={window.innerWidth > 768 ? "h3" : "h5"}
+            className={classes.header}
+          >
             Landscape:
           </Typography>
           {createCarouselByCatergory(landscapeTiles)}
-          <Typography variant="h3" className={classes.header}>
+          <Typography
+            variant={window.innerWidth > 768 ? "h3" : "h5"}
+            className={classes.header}
+          >
             Portrait:
           </Typography>
           {createCarouselByCatergory(portraitTiles)}
@@ -169,7 +182,7 @@ const Portolio = () => {
             }}
           >
             <Fade in={open}>
-              <div className={classes.paper}>
+              <div className="paper">
                 <img src={source} className={classes.img} alt="" />
               </div>
             </Fade>
