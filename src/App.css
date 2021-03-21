@@ -85,6 +85,14 @@ body {
     display: block;
   }
 }
-.box {
-  width: 800px;
+.footer {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: black;
+
+  bottom: 0;
+  left: 0;
+}
+.footer-text {
+  color: wheat;
 }
