@@ -5,6 +5,7 @@ import Portfolio from "./components/Portfolio";
 import About from "./components/About";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import AOS from "./AOS";
 import Footer from "./Menu/Footer";
 const theme = createMuiTheme({
   typography: {

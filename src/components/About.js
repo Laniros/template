@@ -1,6 +1,4 @@
 import React from "react";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
 

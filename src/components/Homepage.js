@@ -41,6 +41,12 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },
+  img: {
+    width: "100%",
+    top: 0,
+    bottom: 0,
+    margin: "auto",
+  },
 }));
 
 const Homepage = () => {
@@ -64,7 +70,12 @@ const Homepage = () => {
     <div>
       <Filler />
       {tileData ? (
-        <GridList spacing={5} className={classes.gridList} cols={3}>
+        <GridList
+          spacing={5}
+          className={classes.gridList}
+          cols={3}
+          cellHeight={250}
+        >
           {tileData.map((tile, index) => (
             <GridListTile
               className={classes.tiles}
@@ -72,7 +83,9 @@ const Homepage = () => {
               key={tile.img}
               cols={tile.cols || 1}
             >
-              <img src={tile.img} alt={tile.title} />
+              <div data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                <img className={classes.img} src={tile.img} alt={tile.title} />
+              </div>
             </GridListTile>
           ))}
         </GridList>

@@ -51,7 +51,6 @@ const Bar = () => {
   const [value, setValue] = React.useState(-1);
 
   useEffect(() => {
-    console.log(value);
     let path = window.location.pathname;
     if (path === "/about" && value !== 2) setValue(2);
     else if (path === "/portfolio" && value !== 1) setValue(1);
