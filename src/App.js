@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Footer from "./Menu/Footer";
 const theme = createMuiTheme({
   typography: {
-    fontFamily: ["Chango"].join(","),
+    fontFamily: ["Merriweather"].join(","),
   },
 });
 

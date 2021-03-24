@@ -27,11 +27,15 @@ const useStyles = makeStyles((theme) => ({
     borderBottom: "10px",
     marginBottom: "20px",
   },
+  tiles: {
+    cursor: "cell",
+  },
   img: {
     maxHeight: windowHeight / 1.2,
     marginLeft: "auto",
     marginRight: "auto",
     display: "block",
+    cursor: "pointer",
   },
   modal: {
     display: "flex",
@@ -50,6 +54,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     alignContent: "center",
     alignItems: "center",
+    cursor: "cell",
   },
 }));
 
@@ -157,7 +162,7 @@ const Portolio = () => {
             variant={window.innerWidth > 768 ? "h3" : "h5"}
             className={classes.header}
           >
-            Landscape:
+            Landscapes:
           </Typography>
           {createCarouselByCatergory(landscapeTiles)}
           <Typography

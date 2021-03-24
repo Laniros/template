@@ -7,7 +7,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
-
+import Filler from "./Filler.js";
 const windowHeight = window.innerHeight;
 const useStyles = makeStyles((theme) => ({
   grid: {
@@ -16,6 +16,9 @@ const useStyles = makeStyles((theme) => ({
     spacing: 8,
     overflow: "hidden",
     backgroundColor: theme.palette.background.paper,
+  },
+  tiles: {
+    cursor: "cell",
   },
   spinner: {
     display: "flex",
@@ -59,10 +62,12 @@ const Homepage = () => {
   };
   return (
     <div>
+      <Filler />
       {tileData ? (
         <GridList spacing={5} className={classes.gridList} cols={3}>
           {tileData.map((tile, index) => (
             <GridListTile
+              className={classes.tiles}
               onClick={() => handleModal(index)}
               key={tile.img}
               cols={tile.cols || 1}
