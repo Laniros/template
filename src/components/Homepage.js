@@ -44,6 +44,10 @@ const useStyles = makeStyles((theme) => ({
   img: {
     width: "100%",
   },
+  div: {
+    textAlign: "center",
+    position: "relative",
+  },
 }));
 
 const Homepage = () => {
@@ -85,6 +89,7 @@ const Homepage = () => {
                 className={classes.div}
               >
                 <img className={classes.img} src={tile.img} alt={tile.title} />
+                <span className="helper"></span>
                 <p>{tile.img.naturalHeight}</p>
               </div>
             </GridListTile>
