@@ -12,7 +12,7 @@ const tileData = [
   },
   {
     img:
-      "https://images.unsplash.com/photo-1434725039720-aaad6dd32dfe?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=3898&q=80",
+      "https://images.pexels.com/photos/884788/pexels-photo-884788.jpeg?cs=srgb&dl=pexels-david-besh-884788.jpg&fm=jpg",
     type: "landscape",
     cols: 3,
   },

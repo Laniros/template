@@ -12,19 +12,14 @@ const useStyles = makeStyles(() => ({
     color: "white",
     background: "white",
     overflow: "hidden",
-    position: "sticky",
   },
   title: {
-    marginLeft: "20px",
+    float: "left",
     color: "black",
-    flexGrow: "1",
-    marginBottom: "10px",
   },
   button: {
     textDecorationLine: "overline",
-    borderBottomWidth: "10px",
-    borderBottom: "10px",
-
+    fontSize: "9px",
     "&:hover": {
       //you want this to be the same as the backgroundColor above
       color: "#000000",
@@ -33,14 +28,13 @@ const useStyles = makeStyles(() => ({
   },
   link: {
     textUnderlineOffset: "1px",
-    marginBottom: "1px",
   },
   allLinks: {
-    marginRight: "100px",
+    width: "100%",
   },
 }));
 
-const Bar = () => {
+const MobileBar = () => {
   const classes = useStyles();
   const [value, setValue] = React.useState(-1);
 
@@ -52,10 +46,10 @@ const Bar = () => {
   }, [value]);
 
   return (
-    <div>
-      <AppBar elevation={0} className={classes.appbar}>
+    <div style={{ marginBottom: "100px" }}>
+      <AppBar className={classes.appbar}>
         <Toolbar>
-          <Typography variant="h2" className={classes.title}>
+          <Typography variant="h6" className={classes.title}>
             JOHN SNOW
           </Typography>
           <div className={classes.allLinks}>
@@ -92,4 +86,4 @@ const Bar = () => {
     </div>
   );
 };
-export default Bar;
+export default MobileBar;

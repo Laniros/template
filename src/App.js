@@ -1,5 +1,6 @@
 import "./App.css";
 import Bar from "./Menu/Appbar.js";
+import MobileBar from "./Menu/Mobilebar.js";
 import Homepage from "./components/Homepage";
 import Portfolio from "./components/Portfolio";
 import About from "./components/About";
@@ -18,7 +19,8 @@ function App() {
   return (
     <Router>
       <ThemeProvider theme={theme}>
-        <Bar />
+        {window.innerWidth > 700 ? <Bar /> : <MobileBar />}
+
         <Route path="/about">
           <About />
         </Route>

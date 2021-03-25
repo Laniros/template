@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "20px",
     display: "flex",
     spacing: 8,
-    overflow: "auto",
+    overflow: "hidden",
     backgroundColor: theme.palette.background.paper,
   },
   tiles: {
@@ -43,9 +43,6 @@ const useStyles = makeStyles((theme) => ({
   },
   img: {
     width: "100%",
-    position: "static",
-    display: "block",
-    overflow: "hidden",
   },
 }));
 
@@ -88,6 +85,7 @@ const Homepage = () => {
                 className={classes.div}
               >
                 <img className={classes.img} src={tile.img} alt={tile.title} />
+                <p>{tile.img.naturalHeight}</p>
               </div>
             </GridListTile>
           ))}
